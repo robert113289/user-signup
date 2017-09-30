@@ -1,14 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head><title>Home Page</title> </head>
-    <body>
+{% extends "base.html" %}
+
+{% block content %}
         <h1>Signup</h1>
+
+    <form action="/welcome" method="post">
+        <!--USERNAME-->
+        <label>Username:
+            <input type="text" name="username"/>
+        </label></br>
+
+        <!--PASSWORD-->
+        <label>Password:
+                <input type="password" name="password"/>
+            </label></br>
+
+        <!--VERIFY PASSWORD-->
+        <label>Verify Password:
+                <input type="password" name="password2"/>
+            </label></br>
+
+        <!--EMAIL-->
+        <label>Email (optional):
+                <input type="text" name="username"/>
+            </label></br>
+
+        <!--SUBMIT-->
+        <input type = "submit"/></br>
+        </form>
+
     
     
     
-    
-    
-    
-    
-    </body>
-</html>
+        {% endblock %}
