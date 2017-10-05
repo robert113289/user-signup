@@ -11,8 +11,8 @@ def index():
 
 
 
-@app.route("/welcome", methods=['POST'])
-def welcome():
+@app.route("/", methods=['POST'])
+def validate():
 
     username = request.form['username']
     password = request.form['password']
@@ -25,7 +25,7 @@ def welcome():
         error = "You cannot have an empty username"
         return render_template('index.html',username_error=error,username=username,email=email)
 
-     #username is not the right length
+    #username is not the right length
     if len(username) < 3 or len(username) > 20:
         error = "Your username has to be atleast 3 characters long but no more than 20"
         return render_template('index.html',title="Signup Error",username_error=error,username=username,email=email)
@@ -68,8 +68,11 @@ def welcome():
 
         
     
-
+    return redirect("/Welcome?username=" + username)
+    
+@app.route("/Welcome", methods=['GET'])
+def welcome():
+    username = request.args.get("username")
     return render_template('welcome.html',title="Welcome",username=username)
-
 
 app.run()
